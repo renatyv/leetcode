@@ -66,7 +66,7 @@ def test_oranges_rotting():
                             [1, 1, 1]]) == 2
 
 
-def test_oranges_rotting():
+def test_oranges_rotting_1():
     assert oranges_rotting([[2, 1, 0],
                             [1, 0, 1],
                             [0, 1, 2]]) == 1
