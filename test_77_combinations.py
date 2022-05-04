@@ -3,9 +3,9 @@ def combine(n: int, k: int) -> list[list[int]]:
     You may return the answer in any order.
     Idea: use recursion. """
     if k == n:
-        return [list(range(1,k+1))]
+        return [list(range(1, k+1))]
     if k == 1:
-        return [[k] for k in range(1,n+1)]
+        return [[k] for k in range(1, n+1)]
     # do not take n + take n
     combinations_if_n_is_taken = [arr + [n] for arr in combine(n-1, k-1)]
     combinations_if_n_is_skipped = combine(n-1, k)
