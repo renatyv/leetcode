@@ -2,8 +2,6 @@ def combine(n: int, k: int) -> list[list[int]]:
     """Given two integers n and k, return all possible combinations of k numbers out of the range [1, n].
     You may return the answer in any order.
     Idea: use recursion. """
-    numbers_stack = []
-    n_start = 1
     if k == n:
         return [list(range(1,k+1))]
     if k == 1:
