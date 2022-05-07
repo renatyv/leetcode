@@ -8,8 +8,7 @@ def searchRange(nums: list[int], target: int) -> list[int]:
     if len(nums) == 0:
         return [-1, -1]
     def find_first_target_index(nums: list[int], target: int) -> int:
-        """Returns start_position, pivot, end position
-        Idea: binary search."""
+        """Idea: binary search."""
         if nums[0] == target:
             return 0
         start_index, end_index = 0, len(nums) - 1
@@ -23,8 +22,7 @@ def searchRange(nums: list[int], target: int) -> list[int]:
             return -1
         return end_index
     def find_last_target_index(nums: list[int], target: int) -> int:
-        """Returns start_position, pivot, end position
-        Idea: binary search."""
+        """Idea: binary search."""
         if nums[-1] == target:
             return len(nums)-1
         start_index, end_index = 0, len(nums) - 1
