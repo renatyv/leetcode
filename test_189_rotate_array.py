@@ -3,6 +3,8 @@ import math
 
 def rotate(nums: list[int], k: int) -> None:
     """
+    Given an array, rotate the array to the right by k steps, where k is non-negative.
+
     Do not return anything, modify nums in-place instead.
     Use less memory
     https://www.geeksforgeeks.org/array-rotation/
