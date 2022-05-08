@@ -52,6 +52,7 @@ def test_cases_3():
     assert findMin([3, 1, 2]) == 1
     assert findMin([2, 3, 1]) == 1
 
+
 def test_cases_4():
     assert findMin([1, 2, 3, 4]) == 1
     assert findMin([4, 1, 2, 3]) == 1
