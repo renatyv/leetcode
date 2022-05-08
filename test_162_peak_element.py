@@ -71,7 +71,7 @@ def test_5():
     assert findPeakElement([0, 3, 2, 1, 0]) == 1
 
 
-def test_5():
+def test_6():
     assert findPeakElement([1, 2, 1, 0, -1]) == 1
     assert findPeakElement([-1, 0, 2, 1, -1]) == 2
     assert findPeakElement([0, 1, 2, 1, 0]) == 2
@@ -82,7 +82,7 @@ def test_5():
     assert  res == 1 or res == 3
 
 
-def test_6():
+def test_7():
     assert findPeakElement([0,1,2,1,0,-1]) == 2
     assert findPeakElement([-1, 0, -1, -2, -1, -3]) == 1
     assert findPeakElement([-2, -1, 0, -1, -2, -3]) == 2
