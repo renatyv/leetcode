@@ -5,32 +5,20 @@ def numSubarrayProductLessThanK(nums: list[int], k: int) -> int:
 
     Idea: dynamic programming.
     Compute subproblem for index up to i, then compute for i+1
-    n_subarrays[i]: number of cont. subarr. with product < k
-    max_subarray_len[i]: maximal len of subarray ending at i, such that its product < k"""
-    n_subarrays: list[int] = [0] * len(nums)
-    # -1 means no subarrays
-    max_subarray_len: list[int] = [0] * len(nums)
+    multiply by new value and then divide previous max product by leftmost index until it is less than k"""
+    if k <= 1:
+        return 0
+    left_index = 0
+    n_subarrays = 0
     # product for the max subbarray ending at i
-    max_subarray_product: list[int] = [1] * len(nums)
-    if nums[0] < k:
-        n_subarrays[0] = 1
-        max_subarray_len[0] = 1
-        max_subarray_product[0] = nums[0]
-    for i, num in enumerate(nums[1:], start=1):
-        if nums[i] >= k:
-            max_subarray_len[i] = 0
-            n_subarrays[i] = n_subarrays[i - 1]
-            continue
-        # update max len of subarray, using solution from previous step
-        # starting index for previous longest cont. subarray
-        max_subarray_len[i] = max_subarray_len[i-1] + 1
-        max_subarray_product[i] = max_subarray_product[i-1] * nums[i]
-        while max_subarray_len[i] > 1 and max_subarray_product[i] >= k:
-            starting_index = i - max_subarray_len[i]+1
-            max_subarray_product[i] = max_subarray_product[i] // nums[starting_index]
-            max_subarray_len[i] -= 1
-        n_subarrays[i] = n_subarrays[i-1] + max_subarray_len[i]
-    return n_subarrays[-1]
+    max_subarray_product = 1
+    for right_index, num in enumerate(nums):
+        max_subarray_product = max_subarray_product * num
+        while max_subarray_product >= k:
+            max_subarray_product = max_subarray_product // nums[left_index]
+            left_index += 1
+        n_subarrays += (right_index-left_index) + 1
+    return n_subarrays
 
 
 def test_1():
