@@ -10,7 +10,8 @@ def shortestPathBinaryMatrix(grid: list[list[int]]) -> int:
     All the adjacent cells of the path are 8-directionally connected
     (i.e., they are different and they share an edge or a corner).
     The length of a clear path is the number of visited cells of this path.
-    Idea: BFS """
+    Idea: BFS
+    Optimizations: not necessary to save path len to each node"""
     nrows: int = len(grid)
     ncols: int = len(grid[0])
     if grid[0][0] == 1:
@@ -31,12 +32,12 @@ def shortestPathBinaryMatrix(grid: list[list[int]]) -> int:
                      if 0 <= r < nrows
                      and 0 <= c < ncols
                      and grid[r][c] == 0]
-        for neighbor_r, neghbor_c in neighbors:
-            if min_path_len_to[neighbor_r][neghbor_c] == MAX_PATH_LEN:
-                min_path_len_to[neighbor_r][neghbor_c] = min_path_len_to[row][col] + 1
-                if (neighbor_r, neghbor_c) == (nrows - 1, ncols - 1):
-                    return min_path_len_to[neighbor_r][neghbor_c]
-                border.append((neighbor_r, neghbor_c))
+        for neighbor_r, neighbor_c in neighbors:
+            if min_path_len_to[neighbor_r][neighbor_c] == MAX_PATH_LEN:
+                min_path_len_to[neighbor_r][neighbor_c] = min_path_len_to[row][col] + 1
+                if (neighbor_r, neighbor_c) == (nrows - 1, ncols - 1):
+                    return min_path_len_to[neighbor_r][neighbor_c]
+                border.append((neighbor_r, neighbor_c))
     return -1
 
 
