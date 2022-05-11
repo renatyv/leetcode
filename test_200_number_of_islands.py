@@ -1,6 +1,3 @@
-import collections
-import numpy as np
-
 def numIslands(grid: list[list[str]]) -> int:
     """Idea: Greedy depth-first-search. If we found ground, discover it fully first. Then continue to discover water.
     For that keep track of discovered water separately."""
