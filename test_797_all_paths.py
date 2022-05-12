@@ -3,7 +3,7 @@ def allPathsSourceTarget(graph: list[list[int]]) -> list[list[int]]:
     find all possible paths from node 0 to node n - 1 and return them in any order.
     The graph is given as follows: graph[i] is a list of all nodes you can visit from node i
     (i.e., there is a directed edge from node i to node graph[i][j]).
-    Idea: DFS"""
+    Idea: BFS"""
     def recursive_all_paths(start_node: int, graph: list[list[int]]) -> list[list[int]]:
         if start_node == len(graph)-1:
             return [[start_node]]
