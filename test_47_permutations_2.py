@@ -1,28 +1,33 @@
+from collections import Counter
+
+
 def permuteUnique(nums: list[int]) -> list[list[int]]:
     """Given a collection of numbers, nums, that might contain duplicates,
     return all possible unique permutations in any order.
     1 <= nums.length <= 8
-    -10 <= nums[i] <= 10"""
-    def permuteSorted(s: str) -> set[str]:
-        if len(s) == 1:
-            return {s}
-        prev_permutations = permuteSorted(s[:-1])
-        add_element = s[-1]
-        resulting_permutations = set()
-        for permutation in prev_permutations:
-            for insert_position in range(len(permutation)):
-                # skip repeating elements
-                if add_element != permutation[insert_position]:
-                    resulting_permutations.add(permutation[:insert_position]+add_element+permutation[insert_position:])
-            resulting_permutations.add(permutation+add_element)
-        return resulting_permutations
+    -10 <= nums[i] <= 10
+    Idea: DFS + backtracking. """
+    if len(nums) == 1:
+        return [nums]
 
-    s = ''.join(chr(ord('a') + 10 + num) for num in nums)
-    permutations: set[str] = permuteSorted(s)
-    resulting_perms = []
-    for s in permutations:
-        resulting_perms.append([ord(char)-ord('a')-10 for char in s])
-    return resulting_perms
+    def generate_permutations(current_prefix: list[int],
+                              nums_counter: dict[int, int],
+                              required_length: int):
+        if len(current_prefix) == required_length:
+            yield current_prefix.copy()
+            return
+        for num in nums_counter:
+            if nums_counter[num] > 0:
+                nums_counter[num] -= 1
+                current_prefix.append(num)
+                for perm in generate_permutations(current_prefix,
+                                      nums_counter,
+                                      required_length):
+                    yield perm
+                nums_counter[num] += 1
+                current_prefix.pop()
+    nums_count = Counter(nums)
+    return list(generate_permutations([], nums_count, len(nums)))
 
 
 def compare_permutations(permutations1, permutations2):
