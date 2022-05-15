@@ -38,15 +38,13 @@ def canJump(nums: list[int]) -> bool:
     unvisited_indexes_stack = [0]
     while unvisited_indexes_stack:
         cur_step = unvisited_indexes_stack.pop()
-        if visited[cur_step]:
-            continue
-        visited[cur_step] = True
         max_index = cur_step + nums[cur_step]
         if max_index >= len(nums) - 1:
             return True
         for next_step in range(cur_step + 1, max_index + 1):
             if not visited[next_step]:
                 unvisited_indexes_stack.append(next_step)
+                visited[next_step] = True
     return False
 
 
