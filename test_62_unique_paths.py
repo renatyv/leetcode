@@ -11,18 +11,18 @@ def uniquePaths(nrows: int, ncols: int) -> int:
     for row_n in range(1, nrows):
         next_row = [1] * ncols
         for col_n in range(1, ncols):
-            next_row[col_n] = prev_row[col_n] + next_row[col_n-1]
+            next_row[col_n] = prev_row[col_n] + next_row[col_n - 1]
         prev_row = next_row
     return prev_row[-1]
 
 
 def test_cases():
-    assert uniquePaths(1,1) == 1
-    assert uniquePaths(2,1) == 1
-    assert uniquePaths(100,1) == 1
+    assert uniquePaths(1, 1) == 1
+    assert uniquePaths(2, 1) == 1
+    assert uniquePaths(100, 1) == 1
     assert uniquePaths(1, 100) == 1
 
 
 def test_examples():
-    assert uniquePaths(3,2) == 3
-    assert uniquePaths(3,7) == 28
+    assert uniquePaths(3, 2) == 3
+    assert uniquePaths(3, 7) == 28
