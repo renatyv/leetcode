@@ -11,18 +11,16 @@ def numberOfArithmeticSlices(nums: list[int]) -> int:
     3. Use that to compute number of slices and longest slice ending at nums[-1]"""
     if len(nums) < 3:
         return 0
-    n_slices: list[int] = [0] * len(nums)
-    length_of_slice_ending_at: list[int] = [0] * len(nums)
-    length_of_slice_ending_at[0] = 1
-    length_of_slice_ending_at[1] = 2
+    slices_number = 0
+    length_of_slice_ending_prev = 2
     for i in range(2, len(nums)):
         if nums[i] - nums[i - 1] == nums[i - 1] - nums[i - 2]:
-            length_of_slice_ending_at[i] = length_of_slice_ending_at[i - 1] + 1
-            n_slices[i] = n_slices[i - 1] + max(0, length_of_slice_ending_at[i] - 2)
+            length_of_slice_ending_at_i = length_of_slice_ending_prev + 1
+            slices_number = slices_number + max(0, length_of_slice_ending_at_i - 2)
         else:
-            length_of_slice_ending_at[i] = 2
-            n_slices[i] = n_slices[i - 1]
-    return n_slices[-1]
+            length_of_slice_ending_at_i = 2
+        length_of_slice_ending_prev = length_of_slice_ending_at_i
+    return slices_number
 
 
 def corner_cases():
