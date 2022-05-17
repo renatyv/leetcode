@@ -13,20 +13,20 @@ def lengthOfLIS(nums: list[int]) -> int:
     # start dynamice programming
     len_of_LIS_ending_at = [1] * len(nums)
     max_LIS = 1
-    for i in range(1, len(nums)):
-        k = i
-        if nums[i-1] == nums[i]:
-            len_of_LIS_ending_at[i] = len_of_LIS_ending_at[i-1]
+    for right in range(1, len(nums)):
+        left = right
+        if nums[right-1] == nums[right]:
+            len_of_LIS_ending_at[right] = len_of_LIS_ending_at[right-1]
         else:
-            while k >= len_of_LIS_ending_at[i]:
-                k -= 1
-                if nums[k] >= nums[i]:
+            while left >= len_of_LIS_ending_at[right]:
+                left -= 1
+                if nums[left] >= nums[right]:
                     continue
-                if k == -1:
-                    len_of_LIS_ending_at[i] = 1
-                len_of_LIS_ending_at[i] = max(len_of_LIS_ending_at[k]+1,
-                                              len_of_LIS_ending_at[i])
-        max_LIS = max(max_LIS, len_of_LIS_ending_at[i])
+                if left == -1:
+                    len_of_LIS_ending_at[right] = 1
+                len_of_LIS_ending_at[right] = max(len_of_LIS_ending_at[left]+1,
+                                              len_of_LIS_ending_at[right])
+        max_LIS = max(max_LIS, len_of_LIS_ending_at[right])
     return max_LIS
 
 
