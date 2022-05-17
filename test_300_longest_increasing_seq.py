@@ -10,24 +10,22 @@ def lengthOfLIS(nums: list[int]) -> int:
     3) find the maximum of len_of_LIS_ending_at"""
     if len(nums) == 1:
         return 1
-    # filter by skipping duplicates
-    nums_without_duplicates = [nums[0]]
-    for i in range(1, len(nums)):
-        if nums[i] != nums_without_duplicates[-1]:
-            nums_without_duplicates.append(nums[i])
     # start dynamice programming
-    len_of_LIS_ending_at = [1] * len(nums_without_duplicates)
+    len_of_LIS_ending_at = [1] * len(nums)
     max_LIS = 1
-    for i in range(1, len(nums_without_duplicates)):
-        LIS_for_smaller_nums = i
-        while LIS_for_smaller_nums >= len_of_LIS_ending_at[i]:
-            LIS_for_smaller_nums -= 1
-            if nums_without_duplicates[LIS_for_smaller_nums] >= nums_without_duplicates[i]:
-                continue
-            if LIS_for_smaller_nums == -1:
-                len_of_LIS_ending_at[i] = 1
-            len_of_LIS_ending_at[i] = max(len_of_LIS_ending_at[LIS_for_smaller_nums]+1,
-                                          len_of_LIS_ending_at[i])
+    for i in range(1, len(nums)):
+        k = i
+        if nums[i-1] == nums[i]:
+            len_of_LIS_ending_at[i] = len_of_LIS_ending_at[i-1]
+        else:
+            while k >= len_of_LIS_ending_at[i]:
+                k -= 1
+                if nums[k] >= nums[i]:
+                    continue
+                if k == -1:
+                    len_of_LIS_ending_at[i] = 1
+                len_of_LIS_ending_at[i] = max(len_of_LIS_ending_at[k]+1,
+                                              len_of_LIS_ending_at[i])
         max_LIS = max(max_LIS, len_of_LIS_ending_at[i])
     return max_LIS
 
