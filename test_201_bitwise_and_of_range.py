@@ -1,6 +1,8 @@
 def rangeBitwiseAnd(left: int, right: int) -> int:
     """Given two integers left and right that represent the range [left, right],
     return the bitwise AND of all numbers in this range, inclusive.
+
+    Idea.
     If number of bits is different, return 0
     When we start &-ing numbers, most of the bits from the left will become 0.
     Only '1's are these, which are common to both numbers.
