@@ -14,7 +14,7 @@ def isHappy(n: int) -> bool:
         squared_digits_sum = 0
         while n > 0:
             squared_digits_sum += (n % 10) ** 2
-            n = n//10
+            n = n // 10
         n = squared_digits_sum
     return False
 
