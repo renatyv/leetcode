@@ -9,15 +9,17 @@ def maxSubArray(nums: list[int]) -> int:
         return 0
     if len(nums) == 1:
         return nums[0]
-    local_max_sum = 0
+    max_sum_subarray_ending_at_i = 0
     global_max_sum = -10 ** 4 - 1
     for num in nums:
-        local_max_sum = max(num, local_max_sum + num)
-        global_max_sum = max(global_max_sum, local_max_sum)
+        # you either add element to previous array or start a new one
+        max_sum_subarray_ending_at_i = max(num,
+                                           max_sum_subarray_ending_at_i + num)
+        global_max_sum = max(global_max_sum, max_sum_subarray_ending_at_i)
     return global_max_sum
 
-def test_max_subarray_examples():
-    assert maxSubArray([-2,1,-3,4,-1,2,1,-5,4]) == 6
-    assert maxSubArray([1]) == 1
-    assert maxSubArray([5,4,-1,7,8]) == 23
 
+def test_max_subarray_examples():
+    assert maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]) == 6
+    assert maxSubArray([1]) == 1
+    assert maxSubArray([5, 4, -1, 7, 8]) == 23
