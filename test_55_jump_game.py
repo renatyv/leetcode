@@ -1,7 +1,6 @@
 def canJump_recursive(nums: list[int]) -> bool:
-    """Idea: create bool array of reachable steps
-    Idea 2: try jumping the longest distance first
-    Idea 3: use bitmasks instead of bool array"""
+    """Idea 1: create bool array of reachable steps
+    Idea 2: try jumping the longest distance first"""
     if len(nums) == 1:
         return True
     if nums[0] == 0:
