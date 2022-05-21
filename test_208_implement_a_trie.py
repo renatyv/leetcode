@@ -1,11 +1,12 @@
 class Trie:
     class _Node:
-        def __init__(self, children: dict, is_terminal: bool):
-            self.children = children
+        def __init__(self, is_terminal: bool = False, children: dict = None):
+            if children is None:
+                self.children = dict()
             self.is_terminal = is_terminal
 
     def __init__(self):
-        self._head = Trie._Node(dict(), False)
+        self._head = Trie._Node(False)
 
     def insert(self, word: str) -> None:
         """ Inserts the string word into the trie."""
@@ -13,19 +14,11 @@ class Trie:
             self._head.is_terminal = True
         else:
             cur_node = self._head
-            char_index = 0
-            while char_index < len(word) and word[char_index] in cur_node.children:
-                cur_node = cur_node.children[word[char_index]]
-                char_index += 1
-            if char_index == len(word):
-                cur_node.is_terminal = True
-            else:
-                while char_index < len(word):
-                    new_node = Trie._Node(dict(), False)
-                    cur_node.children[word[char_index]] = new_node
-                    cur_node = new_node
-                    char_index += 1
-                cur_node.is_terminal = True
+            for char in word:
+                if char not in cur_node.children:
+                    cur_node.children[char] = Trie._Node()
+                cur_node = cur_node.children[char]
+            cur_node.is_terminal = True
 
     def search(self, word: str) -> bool:
         """
