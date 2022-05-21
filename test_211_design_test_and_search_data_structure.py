@@ -10,46 +10,36 @@ class WordDictionary:
 
     def __init__(self):
         self._head = WordDictionary._Node(dict(), False)
+        self._word_set = set()
 
     def addWord(self, word: str) -> None:
-        if not word:
-            self._head.is_terminal = True
-        else:
-            char_index = 0
-            cur_node = self._head
-            try:
-                # find prefix
-                while char_index < len(word):
-                    # raises KeyError if max prefix already found
-                    cur_node = cur_node.children[word[char_index]]
-                    char_index += 1
-                cur_node.is_terminal = True
-            except KeyError:
-                # extend the trie with new characters
-                while char_index < len(word):
-                    new_node = WordDictionary._Node()
-                    cur_node.children[word[char_index]] = new_node
-                    cur_node = new_node
-                    char_index += 1
-                cur_node.is_terminal = True
+        cur_node = self._head
+        for char in word:
+            if char not in cur_node.children:
+                cur_node.children[char] = WordDictionary._Node()
+            cur_node = cur_node.children[char]
+        cur_node.is_terminal = True
 
     def search(self, word: str) -> bool:
-        def search_recursive(node: WordDictionary._Node, word: str):
-            if not word:
-                return node.is_terminal
-            # if not node.children:
-            #     return False
-            if word[0] == '.':
-                return any(search_recursive(child,
-                                            word[1:])
-                           for child in node.children.values())
-            try:
-                return search_recursive(node.children[word[0]],
-                                        word[1:])
-            except KeyError:
-                return False
+        stack = [(self._head, 0)]
+        while stack:
+            node, char_index = stack.pop()
+            if char_index == len(word):
+                if node.is_terminal:
+                    return True
+                else:
+                    continue
+            if word[char_index] == '.':
+                for child in node.children.values():
+                    stack.append((child, char_index + 1))
+            else:
+                try:
+                    stack.append((node.children[word[char_index]], char_index + 1))
+                except KeyError:
+                    continue
+        return False
 
-        return search_recursive(self._head, word)
+        # return search_recursive(self._head, word)
 
 
 def test_a_trie():
