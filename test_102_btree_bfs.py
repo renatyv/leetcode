@@ -10,25 +10,28 @@ class TreeNode:
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:
+        """Given the root of a binary tree,
+        return the level order traversal of its nodes' values.
+        (i.e., from left to right, level by level)."""
         if not root:
             return []
-        levels = []
-        cur_nodes_level: list[TreeNode] = [root]
-        while cur_nodes_level:
+        list_of_levels_of_values: list[list[int]] = []
+        cur_level_of_nodes: list[TreeNode] = [root]
+        while cur_level_of_nodes:
             # add values from current level
             vals_from_cur_level = []
-            for node in cur_nodes_level:
+            for node in cur_level_of_nodes:
                 vals_from_cur_level.append(node.val)
-            levels.append(vals_from_cur_level)
+            list_of_levels_of_values.append(vals_from_cur_level)
             # schedule next level
             next_nodes_level = []
-            for node in cur_nodes_level:
+            for node in cur_level_of_nodes:
                 if node.left:
                     next_nodes_level.append(node.left)
                 if node.right:
                     next_nodes_level.append(node.right)
-            cur_nodes_level = next_nodes_level
-        return levels
+            cur_level_of_nodes = next_nodes_level
+        return list_of_levels_of_values
 
 
 def test_corner_cases():
