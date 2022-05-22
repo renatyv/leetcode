@@ -19,13 +19,7 @@ class Solution:
             left subtree, current node, right subtree"""
             if root is None:
                 return []
-            traversal_list = []
-            if root.left:
-                traversal_list = list_elements_dfs(root.left)
-            traversal_list.append(root.val)
-            if root.right:
-                traversal_list += list_elements_dfs(root.right)
-            return traversal_list
+            return list_elements_dfs(root.left) + [root.val] + list_elements_dfs(root.right)
 
         dfs_list = list_elements_dfs(root)
         if len(dfs_list) == 1:
