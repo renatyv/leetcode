@@ -4,6 +4,7 @@ def missingNumber(nums: list[int]) -> int:
     Idea: 1) sum(nums) + x == sum(range)
     x = sum(range) - sum(nums) = sum(range-nums)
     2) To protect from overflow, compute sum(nums)-sum(range) element-by element"""
+    # add larges element
     current_sum = 0
     for i in range(len(nums)):
         current_sum += i - nums[i]
