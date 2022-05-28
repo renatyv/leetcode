@@ -16,18 +16,18 @@ def wordBreak(s: str, wordDict: list[str]) -> bool:
     words_set = set(wordDict)
 
     @cache
-    def recursive(start_index: int) -> bool:
+    def can_be_split_into_words(start_index: int) -> bool:
         nonlocal words_set
         nonlocal s
         if start_index == len(s):
             return True
         for word in words_set:
             if s.startswith(word, start_index):
-                if recursive(start_index + len(word)):
+                if can_be_split_into_words(start_index + len(word)):
                     return True
         return False
 
-    return recursive(0)
+    return can_be_split_into_words(0)
 
 
 def test_examples():
