@@ -10,22 +10,23 @@ def lengthOfLIS(nums: list[int]) -> int:
     3) find the maximum of len_of_LIS_ending_at"""
     if len(nums) == 1:
         return 1
-    # start dynamice programming
+    # start dynamic programming
     len_of_LIS_ending_at = [1] * len(nums)
     max_LIS = 1
     for right in range(1, len(nums)):
         left = right
-        if nums[right-1] == nums[right]:
-            len_of_LIS_ending_at[right] = len_of_LIS_ending_at[right-1]
+        if nums[right - 1] == nums[right]:
+            len_of_LIS_ending_at[right] = len_of_LIS_ending_at[right - 1]
         else:
-            while left >= len_of_LIS_ending_at[right]:
+            # for all elements smaller than nums[right], try adding nums[right]. Find maximum
+            while left >= 1:
                 left -= 1
                 if nums[left] >= nums[right]:
                     continue
                 if left == -1:
                     len_of_LIS_ending_at[right] = 1
-                len_of_LIS_ending_at[right] = max(len_of_LIS_ending_at[left]+1,
-                                              len_of_LIS_ending_at[right])
+                len_of_LIS_ending_at[right] = max(len_of_LIS_ending_at[left] + 1,
+                                                  len_of_LIS_ending_at[right])
         max_LIS = max(max_LIS, len_of_LIS_ending_at[right])
     return max_LIS
 
@@ -49,4 +50,4 @@ def test_examples():
 def test_corner_large():
     assert lengthOfLIS(list(range(2500))) == 2500
     assert lengthOfLIS(list(range(2500, 0, -1))) == 1
-    assert lengthOfLIS([2]*2500) == 1
+    assert lengthOfLIS([2] * 2500) == 1
