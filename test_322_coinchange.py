@@ -4,15 +4,18 @@ def coinChange(coins: list[int], amount: int) -> int:
     Return the fewest number of coins that you need to make up that amount.
     If that amount of money cannot be made up by any combination of the coins, return -1.
     You may assume that you have an infinite number of each kind of coin.
-    Idea: greedy recursion
-    1. Sort in descending order
-    F(amount, [c1,c2,c3]) = min(F(amount-c1)+1,F(amount-c2)+1,(amount-c3)+1)"""
+    Idea: dynamic programming.
+    Keep an arrau min_count_for[i] - minimal number of coins necessary to get amount i
+    min_count_for[i] =min min_count_for[cur_amount-nominal]+1) for all nominal
+    Optimization idea: sort in ascending order, stop checking coins if nominal > cur_amount
+    """
     MAX_COINS = amount+1
     min_count_for = [MAX_COINS] * (amount+1)
     min_count_for[0] = 0
     for cur_amount in range(amount+1):
         for nominal in coins:
-            if cur_amount >= nominal:
+            # if coins are larger than the necessary sum, do nothing
+            if nominal <= cur_amount:
                 min_count_for[cur_amount] = min(min_count_for[cur_amount],
                                                 min_count_for[cur_amount-nominal]+1)
     if min_count_for[-1] == MAX_COINS:
