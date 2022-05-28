@@ -3,20 +3,17 @@ def productExceptSelf(nums: list[int]) -> list[int]:
     the product of all the elements of nums except nums[i].
     The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
     You must write an algorithm that runs in O(n) time and without using the division operation."""
-    if len(nums) == 1:
-        return nums
-    if len(nums) == 2:
-        return [nums[1], nums[0]]
-    product_of_prefix = [0] * len(nums)
-    product_of_suffix = [0] * len(nums)
-    product_of_prefix[0] = nums[0]
-    product_of_suffix[-1] = nums[-1]
-    for i in range(1, len(nums) - 1):
-        product_of_prefix[i] = product_of_prefix[i - 1] * nums[i]
-        product_of_suffix[-i - 1] = product_of_suffix[-i] * nums[-i - 1]
-    return [product_of_suffix[1]] \
-           + [product_of_prefix[i - 1] * product_of_suffix[i + 1] for i in range(1, len(nums) - 1)] + \
-           [product_of_prefix[-2]]
+    result = [1] * len(nums)
+    prefix_product = 1
+    suffix_product = 1
+
+    for index in range(len(nums)):
+        result[index] *= prefix_product
+        result[-1 - index] *= suffix_product
+        prefix_product *= nums[index]
+        suffix_product *= nums[-1 - index]
+
+    return result
 
 
 def test_corner_cases():
