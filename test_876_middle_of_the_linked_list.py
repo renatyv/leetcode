@@ -2,29 +2,29 @@ from typing import Optional
 
 
 class ListNode:
-    def __init__(self, val=0, next=None):
+    def __init__(self, val=0, next: Optional['ListNode'] = None):
         self.val = val
         self.next = next
 
 
 def middleNode(head: Optional[ListNode]) -> Optional[ListNode]:
     """Given the head of a singly linked list, return the middle node of the linked list.
-    If there are two middle nodes, return the second middle node."""
-    cur_node: Optional[ListNode] = head
-    middle_node: Optional[ListNode] = head
-    move_middle: bool = False
-    while cur_node:
-        cur_node = cur_node.next
-        if move_middle:
-            middle_node = middle_node.next
-        move_middle = not move_middle
-    return middle_node
+    If there are two middle nodes, return the second middle node.
+    Idea: slow & fast pointers"""
+    if head.next is None:
+        return head
+    slow = head
+    fast = head
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+    return slow
 
 
 def list_to_ListNode(nodes: list) -> Optional[ListNode]:
     if not nodes:
         return None
-    head = ListNode(nodes[0],None)
+    head = ListNode(nodes[0], None)
     cur_node = head
     for node in nodes[1:]:
         cur_node.next = ListNode(node, None)
@@ -32,7 +32,7 @@ def list_to_ListNode(nodes: list) -> Optional[ListNode]:
     return head
 
 
-def listNode_to_list(head = Optional[ListNode]) -> list[int]:
+def listNode_to_list(head=Optional[ListNode]) -> list[int]:
     cur_node: Optional[ListNode] = head
     resulting_list = []
     while cur_node:
@@ -43,13 +43,13 @@ def listNode_to_list(head = Optional[ListNode]) -> list[int]:
 
 def test_list_converters():
     assert listNode_to_list(list_to_ListNode([1])) == [1]
-    assert listNode_to_list(list_to_ListNode([1,2])) == [1,2]
-    assert listNode_to_list(list_to_ListNode([1,2,3])) == [1,2,3]
+    assert listNode_to_list(list_to_ListNode([1, 2])) == [1, 2]
+    assert listNode_to_list(list_to_ListNode([1, 2, 3])) == [1, 2, 3]
 
 
 def test_examples():
-    assert listNode_to_list(middleNode(list_to_ListNode([1,2,3,4,5]))) == [3,4,5]
-    assert listNode_to_list(middleNode(list_to_ListNode([1,2,3,4,5,6]))) == [4,5,6]
+    assert listNode_to_list(middleNode(list_to_ListNode([1, 2, 3, 4, 5]))) == [3, 4, 5]
+    assert listNode_to_list(middleNode(list_to_ListNode([1, 2, 3, 4, 5, 6]))) == [4, 5, 6]
 
 
 def test_middleNode_1():
