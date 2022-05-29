@@ -12,7 +12,12 @@ class ListNode:
 
 def reorderList(head: Optional[ListNode]) -> None:
     """
-    Do not return anything, modify head in-place instead.
+    You are given the head of a singly linked-list l0 -> l1 -> l2 -> ... ln
+    Reorder the list to be on the following form: l0 -> ln -> l2 -> ln-1 -> ...
+    Ideas:
+    1) find middle using slow and fast pointer.
+    2) reverse the second half
+    3) merge first half and reversed second half
     """
     if head is None or head.next is None:
         return
