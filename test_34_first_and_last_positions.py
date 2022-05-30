@@ -44,7 +44,7 @@ def test_examples():
     assert searchRange([],0) == [-1,-1]
 
 
-def corner_cases():
+def test_edge_cases():
     assert searchRange([0,0], 0) == [0, 1]
     assert searchRange([1], 0) == [-1, -1]
     assert searchRange([0,1,2,0],0) == [0,3]

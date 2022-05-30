@@ -61,7 +61,7 @@ def longestPalindrome(s: str) -> str:
     return max_palindrome
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert longestPalindrome('a') == 'a'
     assert longestPalindrome('ab') == 'a'
     assert longestPalindrome('aa') == 'aa'

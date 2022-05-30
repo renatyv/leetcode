@@ -15,7 +15,7 @@ def isValid(s: str) -> bool:
     return not opened_parantheses
 
 
-def corner_cases():
+def test_edge_cases():
     assert not isValid("(")
     assert not isValid("}")
     assert not isValid("]{")

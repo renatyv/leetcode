@@ -22,7 +22,7 @@ def maxProduct(nums: list[int]) -> int:
     return abs_max
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert maxProduct([1]) == 1
     assert maxProduct([-1]) == -1
     assert maxProduct([1, 2]) == 2

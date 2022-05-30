@@ -24,7 +24,7 @@ def longestCommonSubsequence(text1: str, text2: str) -> int:
     return len(prev_row[-1])
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert longestCommonSubsequence('a', 'a') == len('a')
     assert longestCommonSubsequence('ab', 'ab') == len('ab')
     assert longestCommonSubsequence('acb', 'ab') == len('ab')

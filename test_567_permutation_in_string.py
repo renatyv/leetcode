@@ -33,7 +33,7 @@ def checkInclusion(reference_string: str, test_string: str) -> bool:
     return False
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert checkInclusion("a", "a")
     assert checkInclusion("a", "abc")
     assert checkInclusion("a", "bac")

@@ -16,7 +16,7 @@ def allPathsSourceTarget(graph: list[list[int]]) -> list[list[int]]:
     return recursive_all_paths(0, graph)
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert allPathsSourceTarget([[1],
                                  []]) == [[0, 1]]
     assert allPathsSourceTarget([[1],

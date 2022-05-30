@@ -40,7 +40,7 @@ def test_examples():
     assert minDistance(word1="leetcode", word2="etco") == 4
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert minDistance('a', 'a') == 0
     assert minDistance('ab', 'ab') == 0
     assert minDistance('a', 'b') == 2

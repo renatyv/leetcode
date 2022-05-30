@@ -16,5 +16,5 @@ def test_examples():
     assert subsets([0]) == [[], [0]]
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert subsets([1]) == [[], [1]]

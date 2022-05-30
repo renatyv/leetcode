@@ -22,7 +22,7 @@ def characterReplacement(s: str, k: int) -> int:
     return longest_seq
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert characterReplacement('A', 0) == 1
     assert characterReplacement('A', 1) == 1
     assert characterReplacement('A', 2) == 1

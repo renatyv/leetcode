@@ -86,7 +86,7 @@ def maxPoints(points: list[list[int]]) -> int:
     return max_count
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert maxPoints([[1, 1], [2, 2]]) == 2
     assert maxPoints([[1, 1], [2, 2], [2, 3]]) == 2
 

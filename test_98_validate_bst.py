@@ -31,7 +31,7 @@ class Solution:
         return True
 
 
-def test_corner_cases():
+def test_edge_cases():
     s = Solution()
     assert s.isValidBST(TreeNode(1))
     assert s.isValidBST(None)

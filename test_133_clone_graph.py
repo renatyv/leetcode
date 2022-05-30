@@ -31,7 +31,7 @@ class Solution:
         return new_root
 
 
-def test_corner_cases():
+def test_edge_cases():
     s = Solution()
     root = Node(1, [])
     graph_copy = s.cloneGraph(root)

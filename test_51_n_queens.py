@@ -56,7 +56,7 @@ def solveNQueens(n: int) -> list[list[str]]:
     return resulting_matricies
 
 
-def test_corener_cases():
+def test_edge_cases():
     assert solveNQueens(1) == [["Q"]]
     assert solveNQueens(2) == []
     assert solveNQueens(3) == []
@@ -71,7 +71,3 @@ def test_examples():
                                 "Q...",
                                 "...Q",
                                 ".Q.."]]
-
-
-def test_largest():
-    assert solveNQueens(9) == []

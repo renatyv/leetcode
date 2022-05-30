@@ -23,7 +23,7 @@ def eraseOverlapIntervals(intervals: list[list[int]]) -> int:
     return overlapping_count
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert eraseOverlapIntervals([[1, 8], [2, 3], [4, 5], [6, 7]]) == 1
 
 

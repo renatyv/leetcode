@@ -33,7 +33,7 @@ class Solution:
             cur_node = leftmost.right
 
 
-def test_corner_cases():
+def test_edge_cases():
     s = Solution()
     assert s.kthSmallest(TreeNode(2,
                                   TreeNode(1),

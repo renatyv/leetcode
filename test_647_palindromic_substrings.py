@@ -24,7 +24,7 @@ def countSubstrings(s: str) -> int:
     return n_palindromic_ss
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert countSubstrings('s') == 1
     assert countSubstrings('ss') == 3
     assert countSubstrings('aba') == 4

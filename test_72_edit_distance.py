@@ -42,7 +42,7 @@ def minDistance(word1: str, word2: str) -> int:
     return subproblems[-1][-1]
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert minDistance('a', 'a') == 0
     assert minDistance('a', 'b') == 1
     assert minDistance('b', 'a') == 1

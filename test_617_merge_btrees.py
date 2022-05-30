@@ -35,7 +35,7 @@ def merge_two_btrees(root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Op
     return merge_result
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert True
 
 

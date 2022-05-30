@@ -24,7 +24,7 @@ def removeNthFromEnd(head: Optional[ListNode], n: int) -> Optional[ListNode]:
     return head
 
 
-def test_corner_cases():
+def test_edge_cases():
     head = list_to_ListNode([1])
     removed_nth_head = removeNthFromEnd(head, 1)
     assert listNode_to_list(removed_nth_head) == []

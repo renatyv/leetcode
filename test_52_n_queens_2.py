@@ -46,7 +46,7 @@ def solveNQueens2(n: int) -> int:
     return len(resulting_combinations)
 
 
-def test_corener_cases():
+def test_edge_cases():
     assert solveNQueens2(1) == 1
     assert solveNQueens2(2) == 0
     assert solveNQueens2(3) == 0

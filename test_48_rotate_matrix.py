@@ -12,7 +12,7 @@ def rotate(matrix: list[list[int]]) -> None:
             matrix[c][-r - 1] = tmp
 
 
-def test_corner_cases():
+def test_edge_cases():
     matrix = [[0]]
     rotate(matrix)
     assert matrix == [[0]]

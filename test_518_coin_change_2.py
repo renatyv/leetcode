@@ -39,7 +39,7 @@ def change(amount: int, coins: list[int]) -> int:
     return recursive_number_of_changes(amount, len(coins))
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert change(0, [7]) == 1
     assert change(0, [1, 2, 3, 4, 4, 5, 5]) == 1
     assert change(1, [1, 2]) == 1

@@ -28,7 +28,7 @@ def insert(intervals: list[list[int]], newInterval: list[int]) -> list[list[int]
     return resulting_intervals
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert insert([], [0, 1]) == [[0, 1]]
     assert insert([], [2, 4]) == [[2, 4]]
     assert insert([[3, 6]], [0, 2]) == [[0, 2], [3, 6]]

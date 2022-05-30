@@ -41,7 +41,7 @@ def test_examples():
     assert findMin([11,13,15,17]) == 11
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert findMin([1]) == 1
     assert findMin([1, 2]) == 1
     assert findMin([2, 1]) == 1

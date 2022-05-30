@@ -30,7 +30,7 @@ def maxProfit(prices: list[int]) -> int:
     return max(buy[-1], sell[-1])
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert maxProfit([0]) == 0
     assert maxProfit([1, 1]) == 0
     assert maxProfit([2, 1]) == 0

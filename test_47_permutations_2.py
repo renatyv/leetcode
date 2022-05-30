@@ -46,7 +46,7 @@ def test_examples():
                                 [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2], [1, 3, 2], [1, 2, 3]])
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert permuteUnique([1]) == [[1]]
     assert permuteUnique([1, 1]) == [[1, 1]]
     assert permuteUnique([1, 1, 1, 1]) == [[1, 1, 1, 1]]

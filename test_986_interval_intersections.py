@@ -69,7 +69,7 @@ def test_empty_cases():
     assert intervalIntersection([[3, 4]], [[1, 2]]) == []
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert intervalIntersection([[1, 2]], [[1, 2]]) == [[1, 2]]
     assert intervalIntersection([[1, 4]], [[2, 3]]) == [[2, 3]]
     assert intervalIntersection([[2, 3]], [[1, 4]]) == [[2, 3]]

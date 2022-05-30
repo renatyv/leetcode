@@ -16,7 +16,7 @@ def productExceptSelf(nums: list[int]) -> list[int]:
     return result
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert productExceptSelf([1, 2]) == [2, 1]
     assert productExceptSelf([1, 2, 3]) == [6, 3, 2]
     assert productExceptSelf([1] * (10 ** 5)) == [1] * (10 ** 5)

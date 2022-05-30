@@ -48,7 +48,7 @@ def canCompleteCircuit(gas: list[int], cost: list[int]) -> int:
     return -1
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert canCompleteCircuit([1], [1]) == 0
     assert canCompleteCircuit([0], [1]) == -1
     assert canCompleteCircuit([0], [2]) == -1

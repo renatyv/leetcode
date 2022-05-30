@@ -34,7 +34,7 @@ class Solution:
         return list_of_levels_of_values
 
 
-def test_corner_cases():
+def test_edge_cases():
     s = Solution()
     assert s.levelOrder(TreeNode(0,
                                  TreeNode(1))) == [[0], [1]]

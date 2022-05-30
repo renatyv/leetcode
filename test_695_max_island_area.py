@@ -69,7 +69,7 @@ def maxAreaOfIsland(grid: list[list[int]]) -> int:
     return max_area
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert maxAreaOfIsland([[0]]) == 0
     assert maxAreaOfIsland([[1]]) == 1
     assert maxAreaOfIsland([[0, 0, 0, 0], [0, 0, 0, 0]]) == 0

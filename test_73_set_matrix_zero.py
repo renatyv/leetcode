@@ -18,7 +18,7 @@ def setZeroes(matrix: list[list[int]]) -> None:
     return
 
 
-def test_corner_cases():
+def test_edge_cases():
     matrix = [[0]]
     setZeroes(matrix)
     assert matrix == [[0]]

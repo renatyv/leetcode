@@ -31,7 +31,7 @@ def lengthOfLIS(nums: list[int]) -> int:
     return max_LIS
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert lengthOfLIS([1]) == 1
     assert lengthOfLIS([1, 2]) == 2
     assert lengthOfLIS([2, 1]) == 1

@@ -47,7 +47,7 @@ class Solution:
         return head
 
 
-def test_corner_cases():
+def test_edge_cases():
     s = Solution()
     list_of_heads = [list_to_ListNode(l) for l in [[1]]]
     merged = s.mergeKLists(list_of_heads)

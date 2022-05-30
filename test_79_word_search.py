@@ -39,7 +39,7 @@ def exist(board: list[list[str]], word: str) -> bool:
     return False
 
 
-def corner_cases():
+def test_edge_cases():
     assert exist([['A']], 'A')
     assert not exist([['B']], 'A')
     assert exist([['A'], ['B']], 'A')

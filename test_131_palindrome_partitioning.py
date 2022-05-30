@@ -30,7 +30,7 @@ def partition(s: str) -> list[list[str]]:
     return partitions
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert partition('a') == [['a']]
     assert partition('ab') == [['a', 'b']]
     assert partition('aa') == [['a', 'a'], ['aa']]

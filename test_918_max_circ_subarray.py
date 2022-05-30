@@ -31,10 +31,10 @@ def maxSubarraySumCircular(nums: list[int]) -> int:
     return max(max_linear_cont_subarray, max_wrap_subarray)
 
 
-def corner_cases():
+def test_edge_cases():
     assert maxSubarraySumCircular([1]) == 1
     assert maxSubarraySumCircular([-1]) == -1
-    assert maxSubarraySumCircular([-1, 1]) == 0
+    assert maxSubarraySumCircular([-1, 1]) == 1
 
 
 def circular_cases():

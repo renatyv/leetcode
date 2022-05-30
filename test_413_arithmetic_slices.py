@@ -23,10 +23,10 @@ def numberOfArithmeticSlices(nums: list[int]) -> int:
     return slices_number
 
 
-def corner_cases():
+def test_edge_cases():
     assert numberOfArithmeticSlices([1, 2]) == 0
     assert numberOfArithmeticSlices([1, 3]) == 0
-    assert numberOfArithmeticSlices([1, 1, 1]) == 0
+    assert numberOfArithmeticSlices([1, 1, 1]) == 1
     assert numberOfArithmeticSlices([1, 2, 4]) == 0
     assert numberOfArithmeticSlices([4, 2, 1]) == 0
     assert numberOfArithmeticSlices([1, 2, 4, 5]) == 0

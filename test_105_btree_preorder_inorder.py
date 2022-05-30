@@ -83,7 +83,7 @@ def test_btree_to_list():
                                                               None, None, None, 4]
 
 
-def test_corner_cases():
+def test_edge_cases():
     s = Solution()
     tree = s.buildTree([1, 2, 3], [2, 1, 3])
     assert btree_to_list(tree) == [1, 2, 3]

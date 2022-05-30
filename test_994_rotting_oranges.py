@@ -53,7 +53,7 @@ def oranges_rotting(grid: list[list[int]]) -> int:
     return max_minutes
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert oranges_rotting([[0]]) == 0
     assert oranges_rotting([[1]]) == -1
     assert oranges_rotting([[2]]) == 0

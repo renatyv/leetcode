@@ -55,7 +55,7 @@ def threeSumClosest(nums: list[int], target: int) -> int:
     return closest_sum
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert threeSumClosest([1, 1, 1], 4) == 3
     assert threeSumClosest([1, 1, 1], 0) == 3
     assert threeSumClosest([1, 2, 1, 1], 3) == 3

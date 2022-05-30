@@ -37,7 +37,7 @@ def combinationSum2(candidates: list[int], target: int) -> list[list[int]]:
     return recursive_solution(len(candidates_keys), target)
 
 
-def test_corner_cases():
+def test_edge_cases():
     assert combinationSum2([1], 3) == []
     assert combinationSum2([1, 2], 3) == [[1, 2]]
     assert combinationSum2([1, 2, 3], 3) == [[1, 2], [3]]
