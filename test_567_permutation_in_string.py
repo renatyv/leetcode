@@ -43,7 +43,7 @@ def test_edge_cases():
     assert not checkInclusion("ab", "b")
 
 
-def check_thesame():
+def check_the_same():
     assert checkInclusion("asv", "vsa")
     assert checkInclusion("arb", "bar")
 
