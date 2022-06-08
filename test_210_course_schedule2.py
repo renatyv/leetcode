@@ -1,3 +1,6 @@
+from collections import deque
+
+
 def findOrder(numCourses: int, prerequisites: list[list[int]]) -> list[int]:
     """Idea: topological sorting"""
     if not prerequisites:
@@ -16,27 +19,27 @@ def findOrder(numCourses: int, prerequisites: list[list[int]]) -> list[int]:
 
     topologically_sorted_courses = []
 
-    while reversed_adj:
-        take_courses = []
-        # select nodes with zero prerequisites
-        for course in out_degree:
-            if out_degree[course] == 0:
-                take_courses.append(course)
+    nodes_deque = deque()
+    for course in range(numCourses):
+        if out_degree[course] == 0:
+            nodes_deque.append(course)
+
+    while nodes_deque:
+        course = nodes_deque.pop()
+        topologically_sorted_courses.append(course)
         #  remove edges to selected nodes
-        for course in take_courses:
-            for depending_course in reversed_adj[course]:
-                out_degree[depending_course] -= 1
-            del out_degree[course]
-            del reversed_adj[course]
-        # if some nodes are left, but they all have out_degree > 0
-        if not take_courses:
-            return []
-        topologically_sorted_courses += take_courses
-    return topologically_sorted_courses
+        for depending_course in reversed_adj[course]:
+            out_degree[depending_course] -= 1
+            if out_degree[depending_course] == 0:
+                nodes_deque.appendleft(depending_course)
+    if len(topologically_sorted_courses) < numCourses:
+        return []
+    else:
+        return topologically_sorted_courses
 
 
 def test_examples():
-    assert findOrder(3, [[1, 0]]) == [0, 2, 1]
+    assert findOrder(3, [[1, 0]]) == [2, 0, 1]
     assert findOrder(2, [[1, 0]]) == [0, 1]
     assert findOrder(4, [[1, 0], [2, 0], [3, 1], [3, 2]]) == [0, 1, 2, 3]
     assert findOrder(1, []) == [0]
@@ -44,4 +47,4 @@ def test_examples():
     assert findOrder(3, [[1, 0], [0, 1]]) == []
     assert findOrder(4, [[3, 2], [1, 2], [1, 0], [2, 0]]) == [0, 2, 1, 3]
     assert findOrder(4, [[3, 2], [1, 0], [2, 0]]) == [0, 1, 2, 3]
-    assert findOrder(4, [[3, 2], [1, 2]]) == [0, 2, 1, 3]
+    assert findOrder(4, [[3, 2], [1, 2]]) == [2, 0, 1, 3]
