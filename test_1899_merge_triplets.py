@@ -1,19 +1,19 @@
+import functools
+
+
 def mergeTriplets(triplets: list[list[int]], target: list[int]) -> bool:
     """
     Idea: keep merging while triplet <= target
     """
     merged_triplet = [0, 0, 0]
     for triplet in triplets:
-        if triplet == target:
-            return True
         # skip if current triplet contains value higher than target
-        if any(triplet[i] > target[i] for i in range(3)):
+        if triplet[0] > target[0] or triplet[1] > target[1] or triplet[2] > target[2]:
             continue
-        # merge
-        merged_triplet = [max(triplet[i], merged_triplet[i]) for i in range(3)]
-        if merged_triplet == target:
-            return True
-    return False
+        merged_triplet = [max(triplet[0], merged_triplet[0]),
+                          max(triplet[1], merged_triplet[1]),
+                          max(triplet[2], merged_triplet[2])]
+    return merged_triplet == target
 
 
 def test_examples():
