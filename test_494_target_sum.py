@@ -39,7 +39,7 @@ def test_edge_cases():
     assert findTargetSumWays([1, 1], 0) == 2  # -1,1; 1,-1
     assert findTargetSumWays([1, 1, 1], 0) == 0
     assert findTargetSumWays([1, 1, 1], 1) == 3  # 1,-1,1; 1,1,-1; -1,1,1
-    assert findTargetSumWays([1,0],1) == 2
+    assert findTargetSumWays([1, 0], 1) == 2
 
 
 def test_examples():
