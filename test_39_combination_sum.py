@@ -31,19 +31,21 @@ def combinationSum(candidates: list[int], target: int) -> list[list[int]]:
                 return [[num] * (target // num)]
             else:
                 return []
-        num = candidates[number_of_used_candidates - 1]
+        last_num = candidates[number_of_used_candidates - 1]
+        # combinations excluding last number
         combinations = recursive_combinations(number_of_used_candidates - 1, target)
-        count_num = 1
-        while target - num * count_num >= 0:
-            new_target = target - num * count_num
-            if new_target == 0:
-                combinations.append([num] * count_num)
+        # combinations including last number
+        last_num_count = 1
+        while target - last_num * last_num_count >= 0:
+            target_without_last_num = target - last_num * last_num_count
+            if target_without_last_num == 0:
+                combinations.append([last_num] * last_num_count)
             else:
-                pre_combinations = recursive_combinations(number_of_used_candidates - 1,
-                                                          new_target)
-                for comb in pre_combinations:
-                    combinations.append(comb + [num] * count_num)
-            count_num += 1
+                combinations_for_target_minus_num = recursive_combinations(number_of_used_candidates - 1,
+                                                                           target_without_last_num)
+                for comb in combinations_for_target_minus_num:
+                    combinations.append(comb + [last_num] * last_num_count)
+            last_num_count += 1
         return combinations
 
     return recursive_combinations(len(candidates), target)
