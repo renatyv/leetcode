@@ -34,9 +34,12 @@ class Solution:
         # if lists is empty or all lists inside are empty
         if not min_heap:
             return None
+        # init head as with a minimal element
         head: Solution.OrderedListNode = heapq.heappop(min_heap)
+        # put next element into the heap
         if head.next:
             heapq.heappush(min_heap, head.next)
+        # keep getting the minimal element from the heap and pushing the next one
         tail = head
         while min_heap:
             next_min = heapq.heappop(min_heap)
