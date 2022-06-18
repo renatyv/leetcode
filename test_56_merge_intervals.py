@@ -11,19 +11,19 @@ def merge(intervals: list[list[int]]) -> list[list[int]]:
     # sort by left side
     sorted_intervals = list(sorted(intervals, key=lambda interval: interval[0]))
     merged_intervals = []
-    # dummy previous interval [-2,-1]
+    # dummy previous interval [-2,-1]. Guaranteed to not intersect with others
     prev_left, prev_right = [-2, -1]
-    i = 0
-    while i < len(sorted_intervals):
-        i_left, i_right = sorted_intervals[i]
-        if i_left > prev_right:  # no overlap with current interval, put current in the resulting array
+    for cur_interval in sorted_intervals:
+        cur_left, cur_right = cur_interval
+        if cur_left > prev_right:  # no overlap with current interval, put current in the resulting array
             merged_intervals.append([prev_left, prev_right])
-            prev_left, prev_right = i_left, i_right
+            prev_left, prev_right = cur_left, cur_right
         else:
             # overlap detected, expand previous interval
-            prev_right = max(prev_right, i_right)
-        i += 1
+            prev_right = max(prev_right, cur_right)
+    # append last one
     merged_intervals.append([prev_left, prev_right])
+    # skip the dummy interval
     return merged_intervals[1:]
 
 
